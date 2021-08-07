@@ -1,0 +1,70 @@
+service: websocket-chat
+
+provider:
+  name: aws
+  stage: dev
+  runtime: nodejs12.x
+  region: us-west-2
+  tracing:
+    lambda: true
+
+plugins:
+  - serverless-bundle
+  - serverless-dynamodb-local
+  - serverless-offline # Needs to be last in order for dynamo-local to work
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  resourcesStages:
+    prod: prod
+    dev: dev
+  # dynamodb:
+  #   stages:
+  #     - dev
+  #   start:
+  #     port: 8000
+  #     inMemory: true
+  #     migrate: true
+
+# TODO
+# Resources:
+#   UsersTable:
+#     Type: AWS::DynamoDB::Table
+#     Properties:
+#       # Generate a name based on the stage
+#       TableName: ${self:custom.chatConnectionTableName}
+#       AttributeDefinitions:
+#         #UUID from cognito for users id's
+#         - AttributeName: userId
+#           AttributeType: S
+#       KeySchema:
+#         - AttributeName: userId
+#           KeyType: HASH
+#       # Set the capacity to auto-scale
+#       BillingMode: PAY_PER_REQUEST
+
+functions:
+  connect:
+    handler: handler.connect
+    events:
+      - websocket:
+          route: $connect # authorizers are only for connect routes
+  default:
+    handler: handler.default
+    events:
+      - websocket:
+          route: $default
+
+lambdaPolicyXRay:
+  Effect: Allow
+  Action:
+    - xray:PutTraceSegments
+    - xray:PutTelemetryRecords
+  Resource: "*"
+
+package:
+  individually: true
+  exclude:
+    - node_modules/dynamodb-localhost/**
+    - node_modules/serverless-dynamodb-local/**
+    - node_modules/serverless-offline/**

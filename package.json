@@ -1,0 +1,24 @@
+{
+  "name": "serverless-realtime-chat",
+  "version": "1.0.0",
+  "description": "Chat app using websockets and the serverless framework ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnStauffer/serverless-realtime-chat.git"
+  },
+  "author": "Curtis Lin, John Stauffer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnStauffer/serverless-realtime-chat/issues"
+  },
+  "homepage": "https://github.com/johnStauffer/serverless-realtime-chat#readme",
+  "devDependencies": {
+    "serverless": "^2.53.1",
+    "serverless-bundle": "^4.4.0",
+    "serverless-offline": "^8.0.0"
+  }
+}
