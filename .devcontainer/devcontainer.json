@@ -36,7 +36,7 @@
 
   // Mount AWS creds
   "mounts": [
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws/credentials,target=/home/vscode/.aws/credentials,type=bind,consistency=cached"
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws/credentials,target=/home/node/.aws/credentials,type=bind,consistency=cached"
   ],
 
   // Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
