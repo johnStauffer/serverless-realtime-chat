@@ -4,6 +4,9 @@
 # golang output binary directory
 bin
 
+# golang vendor (dependencies) directory
+vendor
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
