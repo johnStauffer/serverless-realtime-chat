@@ -1,4 +1,5 @@
-## serverless-go
+## serverless-chat
+Serverless backend chat app with Go Lambdas
 ## Local Development
 1. Install go (`go1.17`)
 2. Run `go mod download` 
