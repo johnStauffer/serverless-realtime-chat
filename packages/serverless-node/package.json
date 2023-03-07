@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/johnStauffer/serverless-realtime-chat#readme",
   "devDependencies": {
-    "serverless": "^2.53.1",
+    "serverless": "^3.28.1",
     "serverless-bundle": "^4.4.0",
     "serverless-offline": "^8.0.0"
   }
